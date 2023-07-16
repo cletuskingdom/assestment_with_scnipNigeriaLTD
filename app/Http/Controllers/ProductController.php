@@ -10,57 +10,18 @@ class ProductController extends Controller
 {
     public function index()
     {
+        // $collection = Product::all();
+        // $sorted = $collection->sortBy('sales_count');
+        // return $sorted->values()->all();
+        // return false;
+
         $collection = Product::all();
-        $sorted = $collection->sortBy('sales_count');
-        return $sorted->values()->all();
-        return false;
-    }
+        // $sorted = $collection->sortBy('price'); // sorting by price
+        $sorted = $collection->sortBy(function ($product) {
+            return $product->sales_count / $product->views_count; // sorting the ratio of sales per view
+        });
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Product $product)
-    {
-        //
+        $sortedProducts = $sorted->values()->all();
+        return $sortedProducts;
     }
 }
