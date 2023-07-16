@@ -10,11 +10,6 @@ class ProductController extends Controller
 {
     public function index()
     {
-        // $collection = Product::all();
-        // $sorted = $collection->sortBy('sales_count');
-        // return $sorted->values()->all();
-        // return false;
-
         $collection = Product::all();
         // $sorted = $collection->sortBy('price'); // sorting by price
         $sorted = $collection->sortBy(function ($product) {
@@ -22,6 +17,9 @@ class ProductController extends Controller
         });
 
         $sortedProducts = $sorted->values()->all();
-        return $sortedProducts;
+        return view('welcome', [
+            'sortedProducts' => $sortedProducts,
+            'tb_head' => $collection->first() ? array_keys($collection->first()->getAttributes()) : []
+        ]);
     }
 }
