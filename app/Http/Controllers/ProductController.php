@@ -28,9 +28,9 @@ class ProductController extends Controller
         $sorted = $collection->sortBy($request->sortBy);
 
         // Multiple sorting
-        $sorted = $collection->sortBy(function ($product) {
-            return $product->sales_count / $product->views_count;
-        });
+        // $sorted = $collection->sortBy(function ($product) {
+        //     return $product->sales_count / $product->views_count;
+        // });
 
         $sortedProducts = $sorted->values()->all();
         return view('welcome', [

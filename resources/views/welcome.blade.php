@@ -12,37 +12,35 @@
         <section class="container py-5">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="{{ route('single_sorting') }}" method="post">
-                        @csrf
+                    <div class="singleSorting">
+                        <form action="{{ route('single_sorting') }}" method="post">
+                            @csrf
+    
+                            <div class="input-group mb-3">
+                                <select name="sortBy" id="" class="form-select">
+                                    <option value="price">PRICE</option>
+                                    <option value="duration">DURATION</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-success px-4">Search</button>
+                            </div>
+                        </form>
+                    </div>
 
-                        <div class="input-group mb-3">
-                            <select name="sortBy" id="" class="form-select">
-                                <option value="price">PRICE</option>
-                                <option value="ratio">RATIO</option>
-                            </select>
-                            <button type="submit" class="btn btn-sm btn-success px-4">Search</button>
-                        </div>
-                    </form>
+                    <div class="multipleSorting">
+                        mm
+                    </div>
                 </div>
 
                 <div class="col-md-6">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Single sorting
-                        </label>
-                    </div>
+                    <input type="radio" name="toggle" value="singleSorting" id="showToggle">
+                    <label for="showToggle">Single sorting</label>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Multiple sorting
-                        </label>
-                    </div>
+                    <input type="radio" name="toggle" value="multipleSorting" id="hideToggle">
+                    <label for="hideToggle">Multiple sorting</label>
                 </div>
             </div>
 
-            <div class="table-responsive">
+            <div class="pt-5 table-responsive">
                 <table class="table">
                     <thead class="table-dark">
                         <tr>
@@ -67,6 +65,26 @@
             </div>
         </section>
         
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script>
+            $('.multipleSorting').hide();
+            $('.singleSorting').hide();
+
+            $(document).ready(function() {
+                $('input[name="toggle"]').change(function() {
+                    var selectedValue = $(this).val();
+
+                    if (selectedValue === "singleSorting") {
+                        $('.multipleSorting').hide();
+                        $('.singleSorting').show();
+                    } else if (selectedValue === "multipleSorting") {
+                        $('.multipleSorting').show();
+                        $('.singleSorting').hide();
+                    }
+                });
+            });
+
+        </script>
     </body>
 </html>
