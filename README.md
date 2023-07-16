@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#!" target="_blank"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.correcttech.com%2Fhs-fs%2Fhub%2F393518%2Ffile-2177017792-png%2FBlog_Images%2FASSESSMENT.png%23keepProtocol&f=1&nofb=1&ipt=a27cf0f799bf03fcdc4ab3ad2d91c1aede9109d4bda642006c714cb660105999&ipo=images" width="400" alt="Laravel Logo"></a></p>
 
 
 ## About the Assessment
