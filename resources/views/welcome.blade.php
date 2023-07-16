@@ -10,7 +10,9 @@
 
     <body>
         <section class="container py-5">
-            <div class="row">
+            <a href="{{ url('/') }}">Home</a>
+            
+            <div class="row pt-3">
                 <div class="col-md-6">
                     <div class="singleSorting">
                         <form action="{{ route('single_sorting') }}" method="post">
