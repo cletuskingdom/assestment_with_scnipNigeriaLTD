@@ -21,13 +21,38 @@
                                     <option value="price">PRICE</option>
                                     <option value="duration">DURATION</option>
                                 </select>
-                                <button type="submit" class="btn btn-sm btn-success px-4">Search</button>
+                                <button type="submit" class="btn btn-sm btn-success px-4">Sort now!</button>
                             </div>
                         </form>
                     </div>
 
                     <div class="multipleSorting">
-                        mm
+                        <form action="{{ route('multiple_sorting') }}" method="post">
+                            @csrf
+    
+                            <div class="mb-3">
+                                <select name="sortBy_1" id="" class="form-select mb-3">
+                                    @foreach ($tb_head as $data)
+                                        @if($data == 'id' || $data == 'name')
+                                        @else
+                                            <option value="{{ $data }}">{{ $data }}</option>
+                                        @endif      
+                                    @endforeach
+                                </select>
+
+                                <input type="text" class="form-control mb-3" name="compare" placeholder="/ or +">
+
+                                <select name="sortBy_2" id="" class="form-select mb-3">
+                                    @foreach ($tb_head as $data)
+                                        @if($data == 'id' || $data == 'name')
+                                        @else
+                                            <option value="{{ $data }}">{{ $data }}</option>
+                                        @endif      
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-sm btn-success px-4">Sort now!</button>
+                        </form>
                     </div>
                 </div>
 
