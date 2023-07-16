@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ProductController::class, 'index'])->name('welcome');
+Route::get('/search', [ProductController::class, 'indexs']);
+Route::post('/search', [ProductController::class, 'single_sorting'])->name('single_sorting');

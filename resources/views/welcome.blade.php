@@ -10,6 +10,38 @@
 
     <body>
         <section class="container py-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="{{ route('single_sorting') }}" method="post">
+                        @csrf
+
+                        <div class="input-group mb-3">
+                            <select name="sortBy" id="" class="form-select">
+                                <option value="price">PRICE</option>
+                                <option value="ratio">RATIO</option>
+                            </select>
+                            <button type="submit" class="btn btn-sm btn-success px-4">Search</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Single sorting
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Multiple sorting
+                        </label>
+                    </div>
+                </div>
+            </div>
+
             <div class="table-responsive">
                 <table class="table">
                     <thead class="table-dark">
@@ -24,12 +56,9 @@
                         <tr>
                             @foreach ($sortedProducts as $data2)
                                 <tr>
-                                    <td scope="col">{{ $data2->id }}</td>
-                                    <td scope="col">{{ $data2->name }}</td>
-                                    <td scope="col">{{ $data2->price }}</td>
-                                    <td scope="col">{{ $data2->sales_count }}</td>
-                                    <td scope="col">{{ $data2->views_count }}</td>
-                                    <td scope="col">{{ $data2->created }}</td>
+                                    @foreach ($tb_head as $data)                    
+                                        <td scope="col">{{ $data2->$data }}</td>
+                                    @endforeach
                                 </tr>                 
                             @endforeach
                         </tr>

@@ -11,9 +11,25 @@ class ProductController extends Controller
     public function index()
     {
         $collection = Product::all();
-        // $sorted = $collection->sortBy('price'); // sorting by price
+        return view('welcome', [
+            'sortedProducts' => $collection,
+            'tb_head' => $collection->first() ? array_keys($collection->first()->getAttributes()) : []
+        ]);
+    }
+
+    public function indexs() {
+        return redirect()->route('welcome');
+    }
+
+    public function single_sorting(Request $request){
+        $collection = Product::all();
+
+        // Single sorting
+        $sorted = $collection->sortBy($request->sortBy);
+
+        // Multiple sorting
         $sorted = $collection->sortBy(function ($product) {
-            return $product->sales_count / $product->views_count; // sorting the ratio of sales per view
+            return $product->sales_count / $product->views_count;
         });
 
         $sortedProducts = $sorted->values()->all();
