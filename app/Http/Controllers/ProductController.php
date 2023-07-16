@@ -10,18 +10,10 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = [
-            // The unsorted array of products
-        ];
-
-        $catalog = new Catalog($products);
-        $productPriceSorter = 'price'; // Sort by price
-        $productSalesPerViewSorter = 'salesPerView'; // Sort by sales per view
-
-        $productsSortedByPrice = $catalog->getProducts($productPriceSorter);
-        $productsSortedBySalesPerView = $catalog->getProducts($productSalesPerViewSorter);
-
-        // Return the sorted products or pass them to a view
+        $collection = Product::all();
+        $sorted = $collection->sortBy('sales_count');
+        return $sorted->values()->all();
+        return false;
     }
 
     /**

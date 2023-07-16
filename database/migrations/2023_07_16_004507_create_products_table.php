@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('price');
             $table->string('sales_count');
             $table->string('views_count');
-            $table->timestamps('created');
-            $table->timestamps();
+            $table->timestamp('created');
+            // $table->timestamps();
         });
     }
 
